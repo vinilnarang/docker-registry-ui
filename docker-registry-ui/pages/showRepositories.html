@@ -1,0 +1,77 @@
+<div class="row">
+	<div class="col-lg-4"></div>
+	<div class="col-lg-4"><center><h4> All repositories for {{IP}}/{{namespace}}  </h4></center></div>
+	<div class="col-lg-4">
+		
+		<div class="row">
+			<div class="col-lg-6"></div>
+			<div class="col-lg-1">
+				<label><h5>Sort</h5></label>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">
+						<select class="form-control" ng-model="orderProp">
+							<option value="name">Name Asc.</option>
+							<option value="-name">Name Dec.</option>
+						</select>
+				</div>
+			</div>
+			
+		</div>
+	</div>						
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-header"> 
+		<div class="panel-body">	
+			<div class="wrap">
+				<div id='content'>
+					<input type="text" width=100% placeholder="Enter Filter Text Here." class="form-control" ng-model="queryRepository">
+				</div>	
+			</div>
+		</div>					
+	</div>
+	<div class="panel-body">
+		<div class="panel-body">				
+			<div class="wrap">
+				<div id='content'>
+					<div  ng-repeat="repository in repositoriesList | filter:queryRepository | orderBy:orderProp" or>	
+						<a ng-href="#showImages?namespace={{namespace}}&repository={{repository.name}}">
+							<div class="box">
+								<link rel="import" href="google.com">
+								<div class="boxInner">
+									
+									<center><h3>{{repository.name}}</h3></center>
+									
+									<div class="titleBox">
+										{{repository.name}} 
+										<!--&nbsp; &nbsp;
+										<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#repoDelete{{repository.id}}" onclick="alert(':(')"><i class="fa fa-times"></i></button>
+										<div class="modal fade" id="repoDelete{{repository.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														<h4 class="modal-title" id="myModalLabel">Confirm Delete Repository</h4>
+													</div>
+													<div class="modal-body">
+														<center>
+														<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteRepo(repository.name)">YES</button>
+														</center>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /.modal -->
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			 </div>
+		</div>	
+	</div>
+</div>
